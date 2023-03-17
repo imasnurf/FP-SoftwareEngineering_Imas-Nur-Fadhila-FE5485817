@@ -1,0 +1,60 @@
+SISTEM KASIR
+
+//Deklarasi Variabel
+
+READ AND WRITE kode_barang with string
+READ AND WRITE nama_barang with string
+READ AND WRITE harga_satuan with number
+READ AND WRITE jumlah_barang with number
+READ AND WRITE total_harga with number
+READ AND WRITE pembayaran with number
+READ AND WRITE kembalian with number
+READ AND WRITE beli_lagi with boolean
+READ AND WRITE uang_kembalian with boolean
+READ AND WRITE bukti_pembayaran with string
+
+// menginput kode_barang dan tampilkan nama barang, harga satuan
+READ AND WRITE kode_barang with string
+
+IF "kode_barang valid?" equal "true"
+       PRINT "nama_barang"," harga_satuan"
+ELSE
+       STORE "kode_barang" with valid
+
+// menginput jumlah_barang dan hitung total harga
+READ AND WRITE jumlah_barang with number
+
+WHILE "jumlah_barang" not equal 0 DO
+       CALL HitungTotalHarga ()
+END WHILE
+
+//procedure total_harga
+PROCEDURE HitungTotalHarga (jumlah_barang, harga_satuan)
+       STORE "total_harga" with jumlah_barang multipy by harga_satuan
+       PRINT "total_harga"
+END PROCEDURE	
+
+// pembelian barang lagi
+READ AND WRITE beli_lagi with boolean
+
+IF "beli_lagi" equal true
+       STORE "kode_barang" with valid
+ELSE
+       WRITE "pembayaran" with number
+
+// hitung kembalian
+READ AND WRITE uang_kembalian with boolean
+
+IF "uang_kembalian" equal true
+       CALL HitungKembalian ()
+       WRITE "kembalian" with number
+ELSE
+       PRINT "bukti_pembayaran"
+
+// procedure kembalian
+PROCEDURE HitungKembalian (pembayaran, total_harga)
+       STORE "kembalian" with pembayaran minus total_harga
+       PRINT "kembalian"
+END PROCEDURE
+
+
